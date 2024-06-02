@@ -34,6 +34,8 @@ app.use((ctx, next) => {
   const now = new Date();
   const date = now.getFullYear()+'-'+now.getMonth()+'-'+now.getDate()+' '+now.getHours()+':'+now.getMinutes();
   const { description, detailed } = ctx.request.body
+  // console.log("метод POST");
+  // console.log(ctx.request.body);
   notes.push({ description, detailed, date: date })
   ctx.response.set('Access-Control-Allow-Origin', '*');
   ctx.response.body = notes;
@@ -98,7 +100,7 @@ app.use((ctx, next) => {
 // });
 
 const server = http.createServer(app.callback());
-const port = 7070;
+const port = 9090;
 server.listen(port, (err) => {
     if (err) {
       console.log(err);
